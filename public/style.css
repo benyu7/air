@@ -14,3 +14,15 @@ body {
     align-items: center;
 }
 
+#watermark {
+  color: green;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 10px;
+}
+
+#watermark img {
+  width: 30px;
+  height: 30px;
+}
