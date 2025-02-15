@@ -8,7 +8,7 @@ let ballDirection: number;
 const startBallSpeed = 5;
 const maxBallSpeed = 20;
 let ballSpeed = 5;
-let playerSpeed = 5;
+let playerSpeed = 8;
 let text: Text;
 let topScoreText: Text;
 let botScoreText: Text;
@@ -212,6 +212,7 @@ function KeyboardEvents() {
     if (event.key == 'f') pressedF = true;
     if (event.key == 'j') pressedJ = true;
     if (event.key == 'k') pressedK = true;
+    if (event.key == 's') Start();
   });
 
   document.addEventListener("keyup", (event) => {
