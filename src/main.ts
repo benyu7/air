@@ -95,7 +95,7 @@ async function setup() {
   app.stage.addChild(topScoreText);
   app.stage.addChild(botScoreText);
 
-  let keyiconTexture = await Assets.load('/assets/keyicon.png');
+  let keyiconTexture = await Assets.load('assets/keyicon.png');
   containerD = new Container();
   containerF = new Container();
   containerJ = new Container();
