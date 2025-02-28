@@ -99,7 +99,7 @@ async function setup() {
   app.stage.addChild(botScoreText);
 
   const botMovementHotkeys = CreateMovementHotkeySet(keyIconTexture, 'W', 'A', 'S', 'D', app.screen.width * 0.62, app.screen.height * 0.7);
-  const topMovementHotkeys = CreateMovementHotkeySet(keyIconTexture, 'K', 'H', 'J', 'L', app.screen.width * 0.38, app.screen.height * 0.3);
+  const topMovementHotkeys = CreateMovementHotkeySet(keyIconTexture, 'i', '-', 'v', '_', app.screen.width * 0.38, app.screen.height * 0.3);
   app.stage.addChild(botMovementHotkeys);
   app.stage.addChild(topMovementHotkeys);
 
@@ -195,10 +195,10 @@ async function setup() {
 
   function KeyboardEvents() {
     document.addEventListener("keydown", (event) => {
-      if (event.key == 'k') topUp = true;
-      if (event.key == 'h') topLeft = true;
-      if (event.key == 'j') topDown = true;
-      if (event.key == 'l') topRight = true;
+      if (event.key == 'ArrowUp') topUp = true;
+      if (event.key == 'ArrowLeft') topLeft = true;
+      if (event.key == 'ArrowDown') topDown = true;
+      if (event.key == 'ArrowRight') topRight = true;
       if (event.key == 'w') botUp = true;
       if (event.key == 'a') botLeft = true;
       if (event.key == 's') botDown = true;
@@ -206,10 +206,10 @@ async function setup() {
     })
 
     document.addEventListener("keyup", (event) => {
-      if (event.key == 'k') topUp = false;
-      if (event.key == 'h') topLeft = false;
-      if (event.key == 'j') topDown = false;
-      if (event.key == 'l') topRight = false;
+      if (event.key == 'ArrowUp') topUp = false;
+      if (event.key == 'ArrowLeft') topLeft = false;
+      if (event.key == 'ArrowDown') topDown = false;
+      if (event.key == 'ArrowRight') topRight = false;
       if (event.key == 'w') botUp = false;
       if (event.key == 'a') botLeft = false;
       if (event.key == 's') botDown = false;
