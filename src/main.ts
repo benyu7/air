@@ -111,7 +111,6 @@ async function setup() {
   ball = new Graphics()
     .circle(app.screen.width / 2, app.screen.height / 2, ballRadius)
     .fill(tekhelet);
-  ball.x = Math.random() * 20 - 10;
   ball.y = boxHeight / 5 + ballRadius;
   const topPuck = CreatePuck(app.screen.width / 2, app.screen.height / 2, puckRadius, coral, -boxHeight * 0.45)
   const botPuck = CreatePuck(app.screen.width / 2, app.screen.height / 2, puckRadius, coral, boxHeight * 0.45)
