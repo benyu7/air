@@ -5,7 +5,8 @@ export default function CollisionVector(obj1: Graphics,
   obj1XSpeed: number,
   obj1YSpeed: number,
   obj2XSpeed: number,
-  obj2YSpeed: number
+  obj2YSpeed: number,
+  obj1Mass: number, obj2Mass: number
 ) {
   const bounds1 = obj1.getBounds();
   const bounds2 = obj2.getBounds();
@@ -20,10 +21,14 @@ export default function CollisionVector(obj1: Graphics,
 
   const vRelativeVelocity = { x: obj1XSpeed - obj2XSpeed, y: obj1YSpeed - obj2YSpeed };
   const speed = vRelativeVelocity.x * vCollisionNorm.x + vRelativeVelocity.y * vCollisionNorm.y;
-  if (speed < 0) return { changeInX: 0, changeInY: 0 };
+  if (speed < 0) return { obj1ChangeX: 0, obj1ChangeY: 0, obj2ChangeX: 0, obj2ChangeY: 0 };
 
-  const changeInX = speed * vCollisionNorm.x;
-  const changeInY = speed * vCollisionNorm.y;
+  const impulse = 2 * speed / (obj1Mass + obj2Mass);
 
-  return { changeInX, changeInY };
+  const obj1ChangeX = impulse * obj2Mass * vCollisionNorm.x;
+  const obj1ChangeY = impulse * obj2Mass * vCollisionNorm.y;
+  const obj2ChangeX = impulse * obj1Mass * vCollisionNorm.x;
+  const obj2ChangeY = impulse * obj1Mass * vCollisionNorm.y;
+
+  return { obj1ChangeX, obj1ChangeY, obj2ChangeX, obj2ChangeY };
 }

@@ -17,6 +17,8 @@ let botPuckYSpeed = 0;
 const ballRadius = 10;
 const goalRadius = 150;
 const puckRadius = 20;
+const ballMass = 1;
+const puckMass = 3;
 let topScore = 0;
 let botScore = 0;
 let topUp = false;
@@ -82,11 +84,11 @@ async function setup() {
   const topScoreText = new Text({ text: '0', style: { fontFamily: 'Lineal', fontSize: 50 } })
   topScoreText.anchor.set(0.5);
   topScoreText.x = app.screen.width / 2;
-  topScoreText.y = app.screen.height / 2 - boxHeight / 2 + goalRadius / 3;
+  topScoreText.y = app.screen.height / 2 - app.screen.height * 0.05;
   const botScoreText = new Text({ text: '0', style: { fontFamily: 'Lineal', fontSize: 50 } })
   botScoreText.anchor.set(0.5);
   botScoreText.x = app.screen.width / 2;
-  botScoreText.y = app.screen.height / 2 + boxHeight / 2 - goalRadius / 3;
+  botScoreText.y = app.screen.height / 2 + app.screen.height * 0.05;
 
   app.stage.addChild(middleLine);
   app.stage.addChild(topLine);
@@ -171,18 +173,18 @@ async function setup() {
       ballYSpeed *= -1;
     }
     if (testForCircleCollision(ball, botPuck)) {
-      const { changeInX, changeInY } = CollisionVector(ball, botPuck, ballXSpeed, ballYSpeed, botPuckXSpeed, botPuckYSpeed);
-      ballXSpeed -= changeInX;
-      ballYSpeed -= changeInY;
-      botPuckXSpeed += changeInX;
-      botPuckYSpeed += changeInY;
+      const { obj1ChangeX, obj1ChangeY, obj2ChangeX, obj2ChangeY } = CollisionVector(ball, botPuck, ballXSpeed, ballYSpeed, botPuckXSpeed, botPuckYSpeed, ballMass, puckMass);
+      ballXSpeed -= obj1ChangeX;
+      ballYSpeed -= obj1ChangeY;
+      botPuckXSpeed += obj2ChangeX;
+      botPuckYSpeed += obj2ChangeY;
     }
     if (testForCircleCollision(ball, topPuck)) {
-      const { changeInX, changeInY } = CollisionVector(ball, topPuck, ballXSpeed, ballYSpeed, topPuckXSpeed, topPuckYSpeed);
-      ballXSpeed -= changeInX;
-      ballYSpeed -= changeInY;
-      topPuckXSpeed += changeInX;
-      topPuckYSpeed += changeInY;
+      const { obj1ChangeX, obj1ChangeY, obj2ChangeX, obj2ChangeY } = CollisionVector(ball, topPuck, ballXSpeed, ballYSpeed, topPuckXSpeed, topPuckYSpeed, ballMass, puckMass);
+      ballXSpeed -= obj1ChangeX;
+      ballYSpeed -= obj1ChangeY;
+      topPuckXSpeed += obj2ChangeX;
+      topPuckYSpeed += obj2ChangeY;
     }
 
     (topSpeed.children[0] as Text).text = 'X: ' + Math.round(topPuckXSpeed * 10);
