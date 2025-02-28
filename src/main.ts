@@ -1,4 +1,4 @@
-import { Application, Assets, BitmapText, Container, Graphics, Sprite, Text } from "pixi.js";
+import { Application, Assets, Graphics, Text } from "pixi.js";
 import { botWallCollision, testForCircleCollision, topWallCollision, vertWallCollision } from "./aabb";
 import CollisionVector from "./collisionvector";
 import CreateMovementHotkeySet, { CreateSpeedText } from "./keyicon";
@@ -29,8 +29,8 @@ let botDown = false;
 let botRight = false;
 const rose = '#a2666f';
 const coral = '#f49390';
-const pink = '#f45866';
-const magenta = '#c45ab3';
+// const pink = '#f45866';
+// const magenta = '#c45ab3';
 const tekhelet = '#631a86';
 
 (async () => {
